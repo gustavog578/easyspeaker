@@ -18,9 +18,10 @@ export class LoginComponent implements OnInit {
     ngOnInit() {
     }
   
-    onSubmit(Email, password){
-      console.log(Email);
-      console.log(password);
+    onSubmit(form){
+      console.log(form.Email);
+      console.log(form.Password);
+      
        /*this.userService.userAuthentication(userName,password).subscribe((data : any)=>{
         localStorage.setItem('userToken',data.access_token);
         this.router.navigate(['/home']);
