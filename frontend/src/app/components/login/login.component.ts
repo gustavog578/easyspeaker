@@ -20,14 +20,15 @@ export class LoginComponent implements OnInit {
   constructor(private Jarwis:JarwisService,private Token:TokenService) { }
 
   onSubmit(){
-    return this.Jarwis.login(this.form).subscribe(
+     this.Jarwis.login(this.form).subscribe(
       data => this.handleResponse(data),
       error => this.handleError(error)
       
     );
   }
   handleResponse(data){
-    this.Token.handle(data.acces_token);
+    console.log(data.access_token); 
+    this.Token.handle(data.access_token);
   }
 
   handleError(error){

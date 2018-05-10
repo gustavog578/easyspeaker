@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SignUpRequest;
 use App\User;
@@ -39,7 +40,7 @@ class AuthController extends Controller
     public function signup(SignUpRequest $request){
 
        $user = User::create($request->all());
-       $user->password = brcypt($user->password);
+                 
        return $this->login($request);    
     
     }

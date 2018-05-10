@@ -4,6 +4,7 @@ namespace App;
 
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements JWTSubject
@@ -50,7 +51,8 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
-    public function setAttributePassword($value){
-        $ths->attributes['password'] = bcrypt($value);
+    public function setPasswordAttribute($pass)
+    {
+        $this->attributes['password'] = Hash::make($pass);
     }
 }

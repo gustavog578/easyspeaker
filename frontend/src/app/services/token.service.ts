@@ -5,13 +5,13 @@ export class TokenService {
 
   constructor() { }
 
-handle(token){
-this.set(token);
-}
+  handle(token){
+    this.set(token);
+  }
 
-set(token){
-  localStorage.setItem('token', token);
-}
+  set(token){
+    localStorage.setItem('token', token);
+  }
 
 }
 
