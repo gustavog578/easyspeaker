@@ -1,6 +1,6 @@
 <div class="mt-4 col-8 offset-2">
   <div class="card">
-    <div class="card-header">
+    <div i18n="app@registerTitle" class="card-header">
       Register Here
     </div>
     <div class="card-body">
@@ -11,32 +11,32 @@
           <div class="col-sm-10">
               <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"
                 [(ngModel)]="form.email" required>
-                <div class="alert alert-danger" [hidden]="!errors.email">
+                <!--<div class="alert alert-danger" [hidden]="!errors.email">
                   {{errors.email}}
-                </div>
+                </div>-->
           </div> 
-          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          <small i18n="app@shareEmailText" id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
         
         <div class="form-group row">
-          <label for="exampleInputName1" class="col-sm-2 col-form-label">Name</label>
+          <label i18n="app@fieldName" for="exampleInputName1" class="col-sm-2 col-form-label">Name</label>
           <div class="col-sm-10"><input type="text" name="name" class="form-control" id="exampleInputName1" aria-describedby="namelHelp" placeholder="Enter name"
             [(ngModel)]="form.name" required>
-            <div class="alert alert-danger" [hidden]="!errors.name">
+           <!-- <div class="alert alert-danger" [hidden]="!errors.name">
               {{errors.name}}
-            </div>
+            </div>-->
           </div>                  
         </div>
 
         <div class="form-group row">
-          <label for="exampleInputName2" class="col-sm-2 col-form-label">Lastname</label>
+          <label i18n="app@fieldLastname" for="exampleInputName2" class="col-sm-2 col-form-label">Lastname</label>
           <div class="col-sm-10">
             <input type="text" name="lastname" class="form-control" id="exampleInputName2" aria-describedby="namelHelp" placeholder="Enter lastname"
               [(ngModel)]="form.lastname" required>
             
-            <div class="alert alert-danger" [hidden]="!errors.lastname">
+            <!--<div class="alert alert-danger" [hidden]="!errors.lastname">
               {{errors.lastname}}
-            </div>
+            </div>-->
           </div>
                     
         </div>
@@ -46,9 +46,9 @@
           <div class="col-sm-10">
             <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" [(ngModel)]="form.password"
               required>
-              <div class="alert alert-danger" [hidden]="!errors.password">
+              <!--<div class="alert alert-danger" [hidden]="!errors.password">
                 {{errors.password}}
-              </div>
+              </div>-->
           </div>                   
         </div>
 

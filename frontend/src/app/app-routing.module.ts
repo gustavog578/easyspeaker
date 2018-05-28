@@ -5,6 +5,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { RequestResetComponent } from './components/password/request-reset/request-reset.component';
 import { ResponseResetComponent } from './components/password/response-reset/response-reset.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const appRoutes : Routes = [
   {
@@ -23,6 +24,10 @@ const appRoutes : Routes = [
     path: 'response-password-reset',
     component: ResponseResetComponent
   },
+  {
+    path : 'profile',
+    component: ProfileComponent
+  }
 
 ]
 

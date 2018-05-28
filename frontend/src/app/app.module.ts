@@ -14,6 +14,8 @@ import { AppRoutingModule } from './/app-routing.module';
 import { HttpClientModule } from "@angular/common/http";
 import { JarwisService } from '../app/services/jarwis.service';
 import { TokenService } from './Services/token.service';
+import { ProfileComponent } from './components/profile/profile.component';
+import { TeachersComponent } from './components/teachers/teachers.component';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { TokenService } from './Services/token.service';
     SignUpComponent,
     NavbarComponent,
     RequestResetComponent,
-    ResponseResetComponent
+    ResponseResetComponent,
+    ProfileComponent,
+    TeachersComponent
   ],
   imports: [
     BrowserModule,
