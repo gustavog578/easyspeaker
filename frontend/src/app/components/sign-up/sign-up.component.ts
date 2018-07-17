@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { JarwisService } from '../../services/jarwis.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -14,21 +14,37 @@ export class SignUpComponent implements OnInit {
     name : null,
     lastname : null,
     password : null,
+    user_type: 0,
     password_confirmation: null,
     genre : null
   };
 
   public errors = [];
 
-  constructor(private Jarwis:JarwisService) { }
+  constructor(private Jarwis:JarwisService, private router: Router) { }
 
   onSubmit() {
     console.log(this.form);
     return this.Jarwis.signup(this.form).subscribe(
-      data => console.log(data),
+      data => this.handleResponse(data),
       error => this.handleError(error)
 
     );
+  }
+
+  handleResponse(data) {
+    //this.Token.handle(data.access_token);
+    //this.Auth.changeAuthStatus(true);
+    //this.getLoggedUser(data);
+    //this.setUserName();
+    this.router.navigateByUrl('/login');
+    
+    /*if (parseInt(this.userLogged.user_type) == 1) {
+      this.router.navigateByUrl('/login');
+    } else {
+      this.router.navigateByUrl('/profile');
+    }*/
+
   }
 
   handleError(error) {

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
+// Declaramos las variables para jQuery
+declare var jQuery: any;
+declare var $: any;
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -9,9 +13,15 @@ export class ProfileComponent implements OnInit {
 
   public username = 'Tavo Gonzalez';  
 
-  constructor() { }
+  constructor() {
+    
+   }
 
   ngOnInit() {
+  }
+
+  public showPanel() {
+     $('#sidebar').toggleClass('active');
   }
 
 }

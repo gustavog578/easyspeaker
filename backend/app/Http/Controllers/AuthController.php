@@ -16,7 +16,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login', 'signup']]);
+        $this->middleware('auth:api', ['except' => ['login', 'signup' ,'me']]);
     }
 
     /**
@@ -27,9 +27,9 @@ class AuthController extends Controller
     public function login()
     {
         $credentials = request(['email', 'password']);
-
         // La clave tiene que estar almacenada con Hash BCRYPT en la DB
         if (! $token = auth()->attempt($credentials)) {
+
             return response()->json(['error' => 'Email or Password doesn\'t exist'], 401);
         }
 
@@ -61,6 +61,7 @@ class AuthController extends Controller
      */
     public function logout()
     {
+
         auth()->logout();
 
         return response()->json(['message' => 'Successfully logged out']);
@@ -86,10 +87,13 @@ class AuthController extends Controller
     protected function respondWithToken($token)
     {
         return response()->json([
-            'access_token' => $token,
-            'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60,
-            'user'       => auth()->user()->name   
+            'access_token'  => $token,
+            'token_type'    => 'bearer',
+            'expires_in'    => auth()->factory()->getTTL() * 60,
+            'user_id'       => auth()->user()->id,
+            'user_name'     => auth()->user()->name,
+            'user_lastname' => auth()->user()->lastname,
+            'user_type'     => auth()->user()->user_type
         ]);
     }
 }

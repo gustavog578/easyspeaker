@@ -24,8 +24,11 @@
           </div>  
           
         </div>
-        
         <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Sing In</button>
+
+        <small class="float-right">
+          <a routerLink="/request-password-reset">Cambiar contraseña</a>
+        </small>
       </form>
     </div>
   </div>

@@ -24,7 +24,10 @@ export class TokenService {
   }
 
   remove(){
-    localStorage.removeItem('token')
+    localStorage.removeItem('token');
+    localStorage.removeItem('username');
+    localStorage.removeItem('userlastname');
+
   }  
 
   isValid(){
