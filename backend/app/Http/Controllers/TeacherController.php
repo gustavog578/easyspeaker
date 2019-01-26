@@ -16,8 +16,18 @@ class TeacherController extends Controller
      */
     public function index()
     { 
-        $users = DB::table('users')->where('user_type', '1')->get();
-
+        $users = DB::table('users')
+                    ->leftjoin('profile_teacher', 'users.id', '=' , 'profile_teacher.teacher_id')
+                    ->leftjoin('languages', 'profile_teacher.native_language_id', '=', 'languages.id')
+                    ->where('user_type', '1')
+                    ->get(['users.*', 'profile_teacher.*', 'languages.name as native_name']);
+        /*
+        $shares = DB::table('shares')
+    ->join('users', 'users.id', '=', 'shares.user_id')
+    ->join('followers', 'followers.user_id', '=', 'users.id')
+    ->where('followers.follower_id', '=', 3)
+    ->get();
+        */
         return response()->json(['data' => $users]);
     }
 

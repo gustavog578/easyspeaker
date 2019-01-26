@@ -34,6 +34,12 @@ export class AuthService {
 
   }
 
+  saveUser(name: string, lastname:string){
+    let fullname = name + ' ' + lastname;
+    this.Token.setUser(fullname);
+
+  }
+
   constructor(private Token : TokenService) {
     
    }

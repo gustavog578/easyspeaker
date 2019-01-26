@@ -22,12 +22,18 @@ export class TokenService {
   get(){
     return localStorage.getItem('token');
   }
+  
+  getUser(){
+    return localStorage.getItem('username');
+  }
+  
+  setUser(fullname){
+    localStorage.setItem('username', fullname);
+  }
 
   remove(){
     localStorage.removeItem('token');
     localStorage.removeItem('username');
-    localStorage.removeItem('userlastname');
-
   }  
 
   isValid(){
@@ -44,6 +50,7 @@ export class TokenService {
 
   payload(token){
     const payload = token.split('.')[1];
+    console.log(this.decode(payload));
     return this.decode(payload);
   }
 

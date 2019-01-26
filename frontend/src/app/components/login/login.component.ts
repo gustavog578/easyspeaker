@@ -39,19 +39,17 @@ export class LoginComponent implements OnInit {
       
     );
   }
-  handleResponse(data){ 
-    console.log(data);   
+  handleResponse(data){
     this.Token.handle(data.access_token); 
     this.Auth.changeAuthStatus(true);
-
+    this.Auth.saveUser(data['user_name'], data['user_lastname']);
     this.Auth.showUser(data['user_name'], data['user_lastname']);
     
     if (data['user_type'] == 1 ){
        this.router.navigateByUrl('/teachers');
     }else{
        this.router.navigateByUrl('/profile');
-    }
-   
+    }   
   }
 
   handleError(error){

@@ -12,6 +12,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule, MatListItem } from '@angular/material/list';
 
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 
@@ -34,6 +36,9 @@ import { AfterLoginService } from './services/after-login.service';
 import { BeforeLoginService } from './services/before-login.service';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { SignUpTeacherComponent } from './components/sign-up-teacher/sign-up-teacher.component';
+import { HeaderComponent } from './components/header/header.component';
+import { ListTeachersInfoComponent } from './components/list-teachers-info/list-teachers-info.component';
+import { MeetingPlacesComponent } from './components/meeting-places/meeting-places.component';
 
 
 
@@ -49,6 +54,9 @@ import { SignUpTeacherComponent } from './components/sign-up-teacher/sign-up-tea
     TeachersComponent,
     SearchBarComponent,
     SignUpTeacherComponent,
+    HeaderComponent,
+    ListTeachersInfoComponent,
+    MeetingPlacesComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,7 +74,10 @@ import { SignUpTeacherComponent } from './components/sign-up-teacher/sign-up-tea
     MatRadioModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSelectModule
+    MatSelectModule,
+    MatCardModule,
+    MatListModule,
+    
   ],
   providers: [JarwisService, TokenService, TeachersService, LoginComponent, AuthService, AfterLoginService, BeforeLoginService, { provide: 'SnotifyToastConfig', useValue: ToastDefaults },
     SnotifyService,{ provide: LOCALE_ID, useValue: "es-AR" }],
