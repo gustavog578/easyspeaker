@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { AuthService } from '../../services/auth/auth.service';
 import { TokenService } from '../../services/token.service';
 import { Router } from '@angular/router';
+
 // Declaramos las variables para jQuery
 declare var jQuery: any;
 declare var $: any;
@@ -11,7 +12,7 @@ declare var $: any;
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnChanges{
 
   public loggedIn: boolean;
   public user:string;
@@ -22,12 +23,17 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.auth.authStatus.subscribe(value => this.loggedIn = value);
-    this.user = this.token.getUser();
-    console.log(this.user);
+    this.auth.userUpdated.subscribe(user => this.user = user);
+    //this.user = this.token.getUser();
+    //console.log(this.user);
     this.otra();
     console.log(this.loggedIn);
     }
- 
+    ngOnChanges(){
+      this.user = this.token.getUser();
+      console.log(this.user);
+    }
+
     public initComponents(){
 
       $('.overlay').show();
@@ -76,8 +82,9 @@ export class HeaderComponent implements OnInit {
     $(".sidebar").hide();
   }
 
-
-
+  public showPanel() {
+    $('#sidebar').toggleClass('active');
+  }
 
 
 

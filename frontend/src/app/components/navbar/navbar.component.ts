@@ -25,11 +25,13 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     console.log("iniciando modulo");
     this.Auth.authStatus.subscribe(value => this.loggedIn = value);
-    //this.Auth.userUpdated.subscribe(user => this.user = user);
+    this.Auth.userUpdated.subscribe(user => this.user = user);
+    
     
 
-    this.user = this.Token.getUser();
-    console.log(this.user);
+    //this.user = this.Token.getUser();
+    console.log("status is :", this.loggedIn);
+    console.log("usuario es :", this.user);
    
   }
 

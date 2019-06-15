@@ -1,11 +1,17 @@
 <div class="container"  style="margin:0; padding: 0px!important;">
+  
   <app-navbar></app-navbar>
+  
   <ng-snotify></ng-snotify>
+  
   <app-header></app-header>
   <div style="display:inline-block" *ngIf="loggedIn">
-    <app-teachers></app-teachers>
+    <!--<app-teachers></app-teachers> -->
+    <app-profile></app-profile>
     <app-meeting-places></app-meeting-places>
+
   </div>
   
   <router-outlet></router-outlet>
+
 </div>

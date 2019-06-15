@@ -2,18 +2,18 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 
 @Injectable()
-export class TeachersService {
+export class LanguagesService {
+
 
   private baseUrl = 'http://localhost:3000/api';
 
   constructor(private http: HttpClient) { }
 
-  get(id) {
-    return this.http.get(`${this.baseUrl}/teacher`, id);
+
+  getLanguages() {
+    return this.http.get(`${this.baseUrl}/languages`);
   }
 
-  getAll(){
-    return this.http.get(`${this.baseUrl}/teachers`);
-  }
+  
 
 }

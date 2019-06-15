@@ -34,22 +34,27 @@ export class LoginComponent implements OnInit {
 
   onSubmit(){
      this.Jarwis.login(this.form).subscribe(
-      data => this.handleResponse(data),  
+       data => this.handleResponse(data),  
       error => this.handleError(error)
       
     );
   }
   handleResponse(data){
+    console.log(data);
+    console.log("token es: ", data.access_token);
     this.Token.handle(data.access_token); 
     this.Auth.changeAuthStatus(true);
-    this.Auth.saveUser(data['user_name'], data['user_lastname']);
-    this.Auth.showUser(data['user_name'], data['user_lastname']);
+    this.Auth.showUser(data.user.username, data.user.lastname);
+    this.Auth.saveUser(data.user.username, data.user.lastname);
     
-    if (data['user_type'] == 1 ){
+    
+    this.router.navigateByUrl('/profile');
+    /*if (data.user.user_type == 1 ){
+      console.log("redirecting");
        this.router.navigateByUrl('/teachers');
     }else{
        this.router.navigateByUrl('/profile');
-    }   
+    }*/
   }
 
   handleError(error){

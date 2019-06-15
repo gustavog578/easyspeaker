@@ -2,7 +2,7 @@
     <div class="wrapper">
         <!-- Sidebar -->
         <nav id="sidebar">
-            <app-search-bar></app-search-bar>
+           <app-search-bar></app-search-bar>
         </nav>
 
         <!-- Page Content -->
@@ -10,15 +10,14 @@
             <div id="content">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <div class="container-fluid">            
-                        <button type="button" id="sidebarCollapse" class="btn btn-info" (click)="showPanel()">
-                            <i class="fas fa-align-left"></i>
-                            <span>Iniciar Busqueda</span>
-                        </button>
+                       
             
                     </div>
                 </nav>
             </div>
             <!-- We'll fill this with dummy content -->
+            <app-list-teachers-info></app-list-teachers-info>
+            <app-maps></app-maps>
         </div>
     </div>
 <!--</div>-->

@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 declare var jQuery: any;
 declare var $: any;
 
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -11,17 +12,17 @@ declare var $: any;
 })
 export class ProfileComponent implements OnInit {
 
-  public username = 'Tavo Gonzalez';  
-
   constructor() {
     
    }
 
   ngOnInit() {
+    $('#sidebar').addClass('inactive');
   }
 
   public showPanel() {
-     $('#sidebar').toggleClass('active');
+     $('#sidebar').removeClass('inactive');
+     $('#sidebar').addClass('active');
   }
 
 }

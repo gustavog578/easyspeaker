@@ -8,16 +8,15 @@ export class AuthService {
 
 
 
-  private loggedIn = new BehaviorSubject <boolean>(this.Token.loggedIn());
-
+  private loggedIn = new BehaviorSubject<boolean>(this.Token.loggedIn());
+  public userUpdated = new BehaviorSubject<string>(this.Token.getUser());
   //@Output() userLogged = new BehaviorSubject <string>("");
 
-  userUpdated: EventEmitter<string> = new EventEmitter();
-
-  
+  //userUpdated: EventEmitter<string> = new EventEmitter();
   //user = this.userLogged.asObservable();
   
   authStatus = this.loggedIn.asObservable();
+  userLogged = this.userUpdated.asObservable();
 
   changeAuthStatus(value : boolean){
     this.loggedIn.next(value);
@@ -27,10 +26,11 @@ export class AuthService {
     return this.userLogged.asObservable();
   }
 */
-  showUser(name : string, lastname : string){
-    let fullname = name + ' ' +lastname;
-   // this.userLogged.next(fullname);
-    this.userUpdated.emit(fullname);
+  showUser(username : string, lastname : string){
+    let fullname = username + ' ' +lastname;
+    this.userUpdated.next(fullname);
+   // console.log("name ", fullname);
+    //this.userUpdated.emit(fullname);
 
   }
 

@@ -1,42 +1,33 @@
 <div class="container">
-  <mat-list>
-    <mat-list-item *ngFor="let teacher of teachers">
-      <img matListAvatar src="assets/images/perfil.jpg" alt="">
-      <h3 matLine> {{teacher.name}}, {{teacher.lastname}} </h3>
-      <p matLine>
-        <span> {{teacher.native_name}} </span><br>
-        <span class="demo-2"> {{teacher.bio}} </span>
-      </p>
-      <div class="container-fluid">
-        <button mat-fab color="primary">Book</button>
-        <button mat-fab>
-          <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
-        </button>
-        
-        <!--<button mat-fab color="accent">Accent</button>
-                <button mat-fab color="warn">Warn</button>
-                <button mat-fab disabled>Disabled</button>
-                -->
-      </div>
-    </mat-list-item>
-  </mat-list>
 
-</div>
-
-<!--<div *ngIf="loggedIn">
-  <h4>List of teachers</h4>
-  <ul class="heroes">
-    <li *ngFor="let teacher of teachers" [class.selected]="hero === selectedTeacher" (click)="onSelect(teacher)">
+  <mat-form-field>
+    <mat-label>Select Language</mat-label>
+    <mat-select placeholder="Languages" [(ngModel)]="selectedLanguage" name="food" (change)="searchByLanguages($event.value)">
+      <mat-option *ngFor="let language of languages" [value]="language.description">
+        {{language.description}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-button (click)= "reset()">Clear</button>
+  <mat-radio-group aria-label="Select an option">
+    <mat-radio-button value="1">Option 1</mat-radio-button>
+    <mat-radio-button value="2">Option 2</mat-radio-button>
+  </mat-radio-group>
+  <h4><span matBadge="4" matBadgeOverlap="false">List of Teachers</span></h4>
+  <ul>
+    <li *ngFor="let teacher of teachers">
       <mat-card class="example-card">
+        <div mat-card-avatar class="example-header-image">
+          <img mat-card-image>
+        </div>
         <mat-card-header>
-          <div mat-card-avatar class="example-header-image">
-            <img mat-card-image src="assets/images/perfil.jpg">
-          </div>
-          <mat-card-title>{{teacher.name}}, {{teacher.lastname}}</mat-card-title>
+          
+          <mat-card-title> {{teacher.username}}, {{teacher.lastname}}</mat-card-title>
           <mat-card-subtitle>Profesor de la comunidad</mat-card-subtitle>
         </mat-card-header>
-        <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
-      <!--  <mat-card-content>
+       <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">-->
+        <mat-card-content>
+          <h5>Native Language</h5><span>{{ teacher.native_language }}</span>
           <p>
             The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes
             very well with mountainous terrain, the Shiba Inu was originally bred for hunting.
@@ -48,18 +39,5 @@
         </mat-card-actions>
       </mat-card>
     </li>
-  </ul>-->
-
-  <!--<div *ngIf="selectedTeacher">
-
-    <h2>{{selectedTeacher.name | uppercase}} Details</h2>
-    <div>
-      <span>id: </span>{{selectedTeacher.id}}</div>
-    <div>
-      <label>name:
-        <input [(ngModel)]="selectedTeacher.name" placeholder="name">
-      </label>
-    </div>
-
-  </div>
-</div>-->
+  </ul>
+</div>

@@ -4,13 +4,14 @@ import { Injectable } from '@angular/core';
 export class TokenService {
 
   private iss = {
-    login  : 'http://localhost:8000/api/login',
-    signup : 'http://localhost:8000/api/signup'
+    login  : 'http://localhost:3000/api/login',
+    signup : 'http://localhost:3000/api/signup'
   };
 
   constructor() { }
 
   handle(token){
+    console.log("en service", token);
     this.set(token);
     console.log(this.isValid());
   }
@@ -20,6 +21,7 @@ export class TokenService {
   }
 
   get(){
+    console.log("GETTING TOKEN", localStorage.getItem('token'));
     return localStorage.getItem('token');
   }
   
@@ -38,10 +40,15 @@ export class TokenService {
 
   isValid(){
     const token = this.get();
+    console.log("TOKEN", token)
     if(token){
       const payload = this.payload(token);
+      console.log(payload);
       if(payload){
-        return Object.values(this.iss).indexOf(payload.iss) > -1 ? true : false; 
+        return true;
+        /*let obj = Object.values(this.iss).indexOf(payload.iss) > -1 ? true : false; 
+        console.log("OBJ PAYLOAD", obj);
+        return obj;*/
       }
     }
     return false;
@@ -49,8 +56,11 @@ export class TokenService {
 
 
   payload(token){
+    
     const payload = token.split('.')[1];
+    
     console.log(this.decode(payload));
+    
     return this.decode(payload);
   }
 
@@ -59,6 +69,7 @@ export class TokenService {
   }
 
   loggedIn(){
+    console.log(this.isValid());
     return this.isValid();
   }
 
