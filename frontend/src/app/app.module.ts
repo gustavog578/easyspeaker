@@ -13,6 +13,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
+import { MatBadgeModule } from '@angular/material/badge';
 
 import { MatListModule, MatListItem } from '@angular/material/list';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
@@ -83,6 +84,7 @@ import { MapsComponent } from './components/maps/maps.component';
     MatListModule,
     MatMenuModule,
     MatToolbarModule,
+    MatBadgeModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDmC4d7y9ll-iY2YUrUMkNyw94Xe2fbc94'
     })

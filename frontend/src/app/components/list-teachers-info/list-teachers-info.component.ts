@@ -19,6 +19,7 @@ export class ListTeachersInfoComponent implements OnInit {
   public languages = [];
   selectedTeacher: null;
   selectedLanguage: String;
+  teachersCount : number;
 
   //public loggedIn: boolean;
 
@@ -44,6 +45,7 @@ export class ListTeachersInfoComponent implements OnInit {
     console.log("teachers", data);
     this.allTeachers = data;
     this.teachers = data;
+    this.teachersCount = this.teachers.length;
   }
 
   handleLanguages(data) {
@@ -63,8 +65,6 @@ export class ListTeachersInfoComponent implements OnInit {
     )
   }
 
-
-
   filterBy(opt, language, data){
     let arr = [];
     data.forEach(element => {
@@ -73,12 +73,15 @@ export class ListTeachersInfoComponent implements OnInit {
         }
     });
     this.teachers = arr;
+    this.teachersCount = this.teachers.length;
     return arr;
   }
 
   reset(){
+    console.log("limpiando");
     this.selectedLanguage = "";
     this.teachers = this.allTeachers;
+    this.teachersCount = this.teachers.length;
   }
 
 }

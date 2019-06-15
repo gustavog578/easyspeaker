@@ -1,7 +1,8 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
-import { BehaviorSubject  } from "rxjs/BehaviorSubject";
+//import { BehaviorSubject  } from "rxjs/BehaviorSubject";
+
 import { TokenService } from '../token.service';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class AuthService {

@@ -2,18 +2,21 @@
 
   <mat-form-field>
     <mat-label>Select Language</mat-label>
-    <mat-select placeholder="Languages" [(ngModel)]="selectedLanguage" name="food" (change)="searchByLanguages($event.value)">
+    <mat-select placeholder="Languages" [(ngModel)]="selectedLanguage" name="language" (selectionChange)="searchByLanguages($event.value)">
       <mat-option *ngFor="let language of languages" [value]="language.description">
         {{language.description}}
       </mat-option>
     </mat-select>
   </mat-form-field>
   <button mat-button (click)= "reset()">Clear</button>
+ 
   <mat-radio-group aria-label="Select an option">
     <mat-radio-button value="1">Option 1</mat-radio-button>
     <mat-radio-button value="2">Option 2</mat-radio-button>
   </mat-radio-group>
-  <h4><span matBadge="4" matBadgeOverlap="false">List of Teachers</span></h4>
+ 
+  <h5><span [(matBadge)]="teachersCount" matBadgeOverlap="false">Teachers available in your area</span></h5>
+  
   <ul>
     <li *ngFor="let teacher of teachers">
       <mat-card class="example-card">
