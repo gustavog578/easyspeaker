@@ -28,6 +28,7 @@ class AuthController extends Controller
     {
         $credentials = request(['email', 'password']);
         // La clave tiene que estar almacenada con Hash BCRYPT en la DB
+       
         if (! $token = auth()->attempt($credentials)) {
 
             return response()->json(['error' => 'Email or Password doesn\'t exist'], 401);
