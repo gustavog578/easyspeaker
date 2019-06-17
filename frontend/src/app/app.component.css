@@ -1,4 +1,16 @@
 .container {
     max-width: 100%;
-    height: auto;
+    height: 700px;
+    margin:0;
+    padding: 0px!important;
+    /*background-image: url('../assets/images/bg.jpg');
+    background-repeat: no-repeat;
+    background-size: auto;*/
+
+
+   /* background-image: url('../assets/images/bg.jpg'); 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;*/
 }

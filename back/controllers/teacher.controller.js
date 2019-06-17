@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt-nodejs');
 const teacherCtrl = {};
 
 teacherCtrl.getTeachers = async (req, res, next) => {
-    const teachers = await Teacher.find({}, { "email": 1, "username": 2, "lastname": 3, "user_type": 4, "native_language": 5, "others_languages": 6  });
+    const teachers = await Teacher.find({}, { "email": 1, "username": 2, "lastname": 3, "user_type": 4, "native_language": 5, "others_languages": 6 , "lat" : 7, "lng" : 8 });
     res.json(teachers);
 };
 
