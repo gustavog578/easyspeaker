@@ -21,4 +21,9 @@ export class MapsService {
   getTeachersByArea(data) {
     return this.http.post(`${this.baseUrl}/searchbyarea`, data);
   }
+
+
+  updateTeacherByLanguage(data){
+    return this.http.post(`${this.baseUrl}/searchbylanguage`, data);
+  }
 }

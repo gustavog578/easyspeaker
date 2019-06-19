@@ -14,7 +14,9 @@ export class MapsComponent implements OnInit {
   zoom: number = 10;
   allMarkers = [];
   markers = [];
-  
+  zoomIn : boolean;
+  direction :number;
+  labelOptions = {};
   filteredMarkers = [];
   
   teacherPos : {
@@ -29,7 +31,6 @@ export class MapsComponent implements OnInit {
         this.lat = +pos.coords.latitude;
       });
     }
-
    }
 
   clickedMarker(label: string, index: number) {
@@ -39,6 +40,48 @@ export class MapsComponent implements OnInit {
   handleMarkers(data){
     console.log(data);
     this.markers = data;
+    this.filteredMarkers = this.markers;
+  }
+
+
+  filterLanguage(language, data){
+    let arr = [];
+    data.forEach(element => {
+      if (element.native_language == language){
+          arr.push(element);
+        }
+    });
+    this.filteredMarkers = arr;
+    return arr;
+  }
+
+  updateMarkers(bounds){
+    
+    if(this.zoomIn !== undefined){
+      // zoom out
+      if(this.direction > bounds ){
+        this.zoomIn = false;
+        this.direction = bounds;
+      }else{
+        this.zoomIn = true;
+        this.direction = bounds;
+      }
+
+      if(!this.zoomIn){
+        console.log("zoom out");
+        for (let mark of this.markers) {
+   
+          let teacherPos = { lat: mark.lat, lng: mark.lng };
+
+          if (bounds.contains(teacherPos)) {
+            this.filteredMarkers.push(mark);
+          }
+        }
+
+      }
+
+    }
+    //console.log(bounds);
   }
 
   checkMarkersInBounds(bounds) {
@@ -51,12 +94,8 @@ export class MapsComponent implements OnInit {
       let teacherPos = { lat: mark.lat, lng: mark.lng };
 
       if (bounds.contains(teacherPos)) {
-
         this.filteredMarkers.push(mark);
-        
-
       }
-      
     }
     console.log("tecaher count", this.markers.length);
     this.markers = this.filteredMarkers;
@@ -90,6 +129,17 @@ export class MapsComponent implements OnInit {
       label?: string;
       draggable: boolean;
     }
+
+    this.labelOptions = {
+      color: '#ee4646',
+      fontFamily: '',
+      fontSize: '10px',
+      fontWeight: 'bold',
+      letterSpacing:'0.5px'
+      
+    }
+
+
   }
 
 

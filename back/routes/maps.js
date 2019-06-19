@@ -5,6 +5,8 @@ const MapsCtrl = require('../controllers/maps.controller');
 
 router.post('/', MapsCtrl.searchByArea);
 
+router.post('/', MapsCtrl.searchByLanguage);
+
 /*router.get('/:id', LanguageCtrl.getLanguage);
 
 router.put('/:id', LanguageCtrl.editLanguage);

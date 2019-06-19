@@ -8,4 +8,10 @@ MapsCtrl.searchByArea = async (req, res, next) => {
     res.json(teachersInArea);
 };
 
+MapsCtrl.searchByLanguage = async (req, res, next) => {
+
+    const teachersByLanguage = await Maps.find({ native_language: req.language});
+    res.json(teachersByLanguage);
+};
+
 module.exports = languageCtrl;
