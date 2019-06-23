@@ -13,7 +13,8 @@ teacherCtrl.getTeachers = async (req, res, next) => {
                 "price": 7,
                 "curreny": 8, 
                 "lat" : 9,
-                "lng" : 10 });
+                "lng" : 10,
+                "reviews" : 11 });
     res.json(teachers);
 };
 

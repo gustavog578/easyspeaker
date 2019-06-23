@@ -77,6 +77,17 @@ export class ListTeachersInfoComponent implements OnInit {
     return arr;
   }
 
+  getReviewByTeacher(id){
+      let reviews  = [];
+      this.teachers.forEach(element => {
+        if (element._id == id){
+            reviews = element.reviews;
+            return reviews;
+        }
+      });
+      return reviews;
+  }
+
   reset(){
     console.log("limpiando");
     this.selectedLanguage = "";
