@@ -25,24 +25,28 @@ export class MapsComponent implements OnInit {
   }
   
   constructor(private teacherSerive: TeachersService) {
+  
     if (navigator) {
       navigator.geolocation.getCurrentPosition(pos => {
         this.lng = +pos.coords.longitude;
         this.lat = +pos.coords.latitude;
       });
     }
-   }
+  }
 
   clickedMarker(label: string, index: number) {
     console.log(`clicked the marker: ${label || index}`)
   }
   
   handleMarkers(data){
-    console.log(data);
     this.markers = data;
-    this.filteredMarkers = this.markers;
   }
-
+  
+  changeStatusMarkers(value){
+    console.log("nuevo orden", value);
+    this.filteredMarkers = value;
+  }
+  
 
   filterLanguage(language, data){
     let arr = [];
@@ -100,7 +104,7 @@ export class MapsComponent implements OnInit {
     console.log("tecaher count", this.markers.length);
     this.markers = this.filteredMarkers;
   }
-
+/*
   mapClicked($event: MouseEvent) {
     console.log("lat", $event.coords.lat);
     console.log("lng", $event.coords.lng);
@@ -110,13 +114,18 @@ export class MapsComponent implements OnInit {
       lng: $event.coords.lng,
       draggable: true
     });
-  }
+  }*/
  /* 
   markerDragEnd(m: marker, $event: MouseEvent) {
     console.log('dragEnd', m, $event);
   }*/
   
    ngOnInit() {
+    
+     this.teacherSerive.markersUpdated.subscribe(
+        value => this.changeStatusMarkers(value)
+        )
+
      this.teacherSerive.getAll().subscribe(
        data => this.handleMarkers(data),
        error => console.log(error)

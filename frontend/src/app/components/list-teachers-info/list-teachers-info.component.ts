@@ -24,7 +24,8 @@ export class ListTeachersInfoComponent implements OnInit {
   //public loggedIn: boolean;
 
   constructor(private TeacherService: TeachersService,
-    private auth: AuthService, private languageService : LanguagesService) { }
+              private auth: AuthService,
+              private languageService : LanguagesService) { }
 
   ngOnInit() {
     
@@ -58,7 +59,6 @@ export class ListTeachersInfoComponent implements OnInit {
   }
 
   searchByLanguages(selectedLanguage){
-    console.log("lang is ", selectedLanguage);
     this.TeacherService.getAll().subscribe(
       data => this.filterBy('language', selectedLanguage ,data),
       error => console.log(error)
@@ -74,6 +74,7 @@ export class ListTeachersInfoComponent implements OnInit {
     });
     this.teachers = arr;
     this.teachersCount = this.teachers.length;
+    this.TeacherService.updateMarkers(this.teachers);
     return arr;
   }
 

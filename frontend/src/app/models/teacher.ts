@@ -1,10 +1,11 @@
 export class Teacher {
     constructor(
-        public id: number = Math.floor(Math.random() * 100),
-        public name: string = "",
+        public id : string = "", 
+        public username: string = "",
         public lastname: string = "",
-        public email: string = "",
-        public genre: string
+        public native_language: string = "",
+        public currency:string = "",
+        public other_languages: [],
     ) {
 
     }
