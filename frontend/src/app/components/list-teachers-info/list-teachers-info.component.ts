@@ -90,10 +90,11 @@ export class ListTeachersInfoComponent implements OnInit {
   }
 
   reset(){
-    console.log("limpiando");
+    console.log("limpiando filtros");
     this.selectedLanguage = "";
     this.teachers = this.allTeachers;
     this.teachersCount = this.teachers.length;
+    this.TeacherService.updateMarkers(this.teachers);
   }
 
 }

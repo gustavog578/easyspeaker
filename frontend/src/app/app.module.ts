@@ -43,6 +43,7 @@ import { ListTeachersInfoComponent } from './components/list-teachers-info/list-
 import { MeetingPlacesComponent } from './components/meeting-places/meeting-places.component';
 import { LanguagesService } from './services/languages.service';
 import { MapsComponent } from './components/maps/maps.component';
+import { ReviewsComponent, AppDialog } from './components/reviews/reviews.component';
 
 
 
@@ -62,6 +63,8 @@ import { MapsComponent } from './components/maps/maps.component';
     ListTeachersInfoComponent,
     MeetingPlacesComponent,
     MapsComponent,
+    ReviewsComponent,
+    AppDialog
   ],
   imports: [
     BrowserModule,
@@ -88,8 +91,6 @@ import { MapsComponent } from './components/maps/maps.component';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDmC4d7y9ll-iY2YUrUMkNyw94Xe2fbc94'
     })
-    
-    
   ],
   providers: [JarwisService, 
               TokenService, 
@@ -100,7 +101,9 @@ import { MapsComponent } from './components/maps/maps.component';
               BeforeLoginService, 
               LanguagesService,
                { provide: 'SnotifyToastConfig', useValue: ToastDefaults },
-    SnotifyService,{ provide: LOCALE_ID, useValue: "es-AR" }],
+    SnotifyService,{ provide: LOCALE_ID, useValue: "es-AR" }
+  ],
+  entryComponents: [AppDialog],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
