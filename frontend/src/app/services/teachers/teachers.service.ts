@@ -15,14 +15,15 @@ export interface ListTeachers {
 @Injectable()
 export class TeachersService {
   
-  private baseUrl = 'http://localhost:3000/api';
+  private baseUrl = 'http://localhost:3030/api';
+  
   private marker = new BehaviorSubject(new Array);
+  
   public markersUpdated = this.marker.asObservable();
   
-
   constructor(private http: HttpClient) { }
 
-  get(id) {
+  get(id: any) {
     return this.http.get(`${this.baseUrl}/teacher`, id);
   }
 
@@ -32,11 +33,8 @@ export class TeachersService {
   
   
   updateMarkers(markers){
-
-    console.log("actualixados", markers);
-    this.marker.next(markers);
-    
-    
+    console.log("actualizados", markers);
+    this.marker.next(markers);        
   }  
 
 

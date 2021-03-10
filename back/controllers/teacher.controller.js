@@ -15,6 +15,7 @@ teacherCtrl.getTeachers = async (req, res, next) => {
                 "lat" : 9,
                 "lng" : 10,
                 "reviews" : 11 });
+        console.log(teachers);       
     res.json(teachers);
 };
 

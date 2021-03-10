@@ -50,8 +50,23 @@ export class ListTeachersInfoComponent implements OnInit {
   }
 
   handleLanguages(data) {
-    console.log("languages",data);
-    this.languages = data;
+    
+    let lang = [];
+    data.forEach(element => {
+      let item: any = element;
+      for (const key in item) {
+        let obj = {
+            "key" : key,
+            "name" : item[key].name            
+        };
+        lang.push(obj);         
+        /*if (Object.prototype.hasOwnProperty.call(obj, key)) {                    
+          const elem = obj[key];                    
+        }*/
+      }
+    });
+    lang.shift();  
+    this.languages = lang;
   }
 
   onSelect(teacher): void {

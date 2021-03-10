@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt-nodejs');
+const bcrypt = require('bcrypt');
 const jwt  = require('jsonwebtoken');
 const { Schema } = mongoose;
 
@@ -12,11 +12,25 @@ const userSchema = new Schema({
 });
 
 userSchema.methods.encryptPassword = (password) => {
-    return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
+
+    bcrypt.hash(password, 10, function(err, hash) {
+        if(err) return err;
+        return hash;
+    });
+
+    //console.log("encrypt", password);
+    //return bcrypt.hash(password, bcrypt.genSaltSync(10));
 };
 
-userSchema.methods.comparePassword = function (password) {
-    return bcrypt.compareSync(password, this.password);
+userSchema.methods.comparePassword = async function (password) {
+    
+    const user = this;
+    const compare = await bcrypt.compare(password, user.password);
+  
+    return compare;
+    
+    /*password = password.toString();
+    return bcrypt.compareSync(password, this.password);*/
 };
 
 // Custom validation for email
@@ -26,21 +40,30 @@ userSchema.path('email').validate((val) => {
 }, 'Invalid e-mail.');
 
 // Events
-userSchema.pre('save', function (next) {
-    bcrypt.genSalt(10, (err, salt) => {
+userSchema.pre(
+    'save', 
+    async function (next) {
+        const user = this;
+        const hash = await bcrypt(this.password,10)
+        this.password = hash;
+        next();
+        /*bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(this.password, salt, (err, hash) => {
             this.password = hash;
             this.saltSecret = salt;
-            next();
+          
         });
-    });
+     });*/
 });
 
 
 // Methods
-/*userSchema.methods.verifyPassword = function (password) {
-    return bcrypt.compareSync(password, this.password);
-};*/
+userSchema.methods.verifyPassword = async function (password) {
+    const user = this;
+    const compare = await bcrypt.compare(password, user.password);
+  
+    return compare;
+};
 
 userSchema.methods.generateJwt = function () {
     console.log(this._id);

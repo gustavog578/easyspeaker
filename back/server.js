@@ -5,6 +5,7 @@ const passport = require('passport');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const flash = require('connect-flash');
 
 // initializations
 const app = express();
@@ -12,12 +13,8 @@ require('./database/database');
 require('./passport/local-auth');
 
 // settings
-app.set('port', process.env.PORT || 3000);
-/*app.set('views', path.join(__dirname, 'views'))
-app.engine('ejs', engine);
-app.set('view engine', 'ejs');
-*/
-//require('./config/config');
+app.set('port', process.env.PORT || 3030);
+
 
 app.set('json spaces', 2);
 // middlewares
@@ -52,10 +49,14 @@ app.use(passport.session());
 app.use((req, res, next) => {
     //app.locals.signinMessage = req.flash('signinMessage');
     //app.locals.signupMessage = req.flash('signupMessage');
+
+
     app.locals.user = req.user;
-    console.log(app.locals)
+   
     next();
 });
+
+app.use(flash());
 
 // routes
 app.use('/api', require('./routes/index'));

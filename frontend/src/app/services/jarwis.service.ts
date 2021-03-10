@@ -5,12 +5,12 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class JarwisService {
 
-  private baseUrl = 'http://localhost:3000/api';
+  private baseUrl = 'http://localhost:3030/api';
 
   constructor(private http: HttpClient) { }
 
   signup(data){
-    console.log(data);
+    console.log("datos", data);
     return this.http.post(`${this.baseUrl}/signup`,data);
   }
 

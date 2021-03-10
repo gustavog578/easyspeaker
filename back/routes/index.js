@@ -16,7 +16,8 @@ router.post('/signup', (req, res, next)=>{
     res.json({param : params})
 });*/
 
-router.post('/signup', passport.authenticate('local-signup', {
+router.post('/signup', 
+    passport.authenticate('local-signup', {
     successRedirect: 'localhost/profile',
     failureRedirect: '/signup',
     failureFlash: true
@@ -28,20 +29,20 @@ router.post('/login', passport.authenticate('local-signin'), function (req, res)
     }
 );*/
 router.post('/login', function (req, res, next) {
-
-    passport.authenticate('local-signin', { session: false }, (err, user, info) => {
-        console.log(err);
+    
+    passport.authenticate('local-signin', async (err, user, info) => {        
+        
         if (err || !user) {
             return res.status(400).json({
                 message: info ? info.message : 'Login failed',
                 user: user
             });
+
         }
 
-        req.login(user, { session: false }, (err) => {
-            if (err) {
-                res.send(err);
-            }
+        req.login(user, { session: false }, async (err) => {
+            
+            if (err) { res.send(err); }
 
             const access_token = jwt.sign({ _id: this._id },
                 'SECRET1234',
@@ -51,14 +52,14 @@ router.post('/login', function (req, res, next) {
             return res.json({ user, access_token });
         });
     })
-        (req, res);
+        (req, res, next);
 
 });
 
-/*
+
 router.get('/profile', isAuthenticated, (req, res, next) => {
     res.render('profile');
-});*/
+});
 
 router.get('/logout', (req, res, next) => {
     req.logout();
@@ -68,8 +69,10 @@ router.get('/logout', (req, res, next) => {
 
 function isAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
+        console.log("Is Autenticate");
         return next();
     }
+
 
     res.redirect('/')
 }

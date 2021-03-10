@@ -3,8 +3,8 @@
   <mat-form-field>
     <mat-label>Select Language</mat-label>
     <mat-select placeholder="Languages" [(ngModel)]="selectedLanguage" name="language" (selectionChange)="searchByLanguages($event.value)">
-      <mat-option *ngFor="let language of languages" [value]="language.description">
-        {{language.description}}
+      <mat-option *ngFor="let language of languages" [value]="language.key">
+        {{language.name}}
       </mat-option>
     </mat-select>
   </mat-form-field>
@@ -31,8 +31,7 @@
         <mat-card-content>
           <h5>Native Language</h5><span>{{ teacher.native_language }}</span>
           <p>
-            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes
-            very well with mountainous terrain, the Shiba Inu was originally bred for hunting.
+            Hi, I am Jaime!! If you are interesting on take class with me, then let me know!!!
           </p>
         </mat-card-content>
         <mat-card-actions>

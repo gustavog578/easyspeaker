@@ -5,7 +5,7 @@ import { HttpClient } from "@angular/common/http";
 export class LanguagesService {
 
 
-  private baseUrl = 'http://localhost:3000/api';
+  private baseUrl = 'http://localhost:3030/api';
 
   constructor(private http: HttpClient) { }
 
