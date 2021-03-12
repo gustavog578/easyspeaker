@@ -11,9 +11,7 @@ export class TokenService {
   constructor() { }
 
   handle(token){
-    console.log("en service", token);
     this.set(token);
-    console.log(this.isValid());
   }
 
   set(token){
@@ -40,10 +38,10 @@ export class TokenService {
 
   isValid(){
     const token = this.get();
-    console.log("TOKEN", token)
+    
     if(token){
       const payload = this.payload(token);
-      console.log(payload);
+    
       if(payload){
         return true;
         /*let obj = Object.values(this.iss).indexOf(payload.iss) > -1 ? true : false; 
@@ -58,9 +56,7 @@ export class TokenService {
   payload(token){
     
     const payload = token.split('.')[1];
-    
-    console.log(this.decode(payload));
-    
+        
     return this.decode(payload);
   }
 
@@ -69,7 +65,6 @@ export class TokenService {
   }
 
   loggedIn(){
-    console.log(this.isValid());
     return this.isValid();
   }
 

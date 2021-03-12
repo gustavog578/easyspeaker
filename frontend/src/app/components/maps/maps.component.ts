@@ -142,7 +142,7 @@ export class MapsComponent implements OnInit {
     this.labelOptions = {
       color: '#ee4646',
       fontFamily: '',
-      fontSize: '10px',
+      fontSize: '12px',
       fontWeight: 'bold',
       letterSpacing:'0.5px'
       
@@ -150,9 +150,5 @@ export class MapsComponent implements OnInit {
 
 
   }
-
-
-
-
 
 }

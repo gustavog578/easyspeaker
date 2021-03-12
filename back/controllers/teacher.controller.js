@@ -11,10 +11,11 @@ teacherCtrl.getTeachers = async (req, res, next) => {
                 "native_language": 5, 
                 "others_languages": 6 , 
                 "price": 7,
-                "curreny": 8, 
+                "currency": 8, 
                 "lat" : 9,
                 "lng" : 10,
-                "reviews" : 11 });
+                "reviews" : 11,
+                "skills":12 });
         console.log(teachers);       
     res.json(teachers);
 };

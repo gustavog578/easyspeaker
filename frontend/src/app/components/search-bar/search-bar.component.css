@@ -1,3 +1,7 @@
+/*.list{
+    //background-color: #11b2cc;
+}*/
+
 a[data-toggle="collapse"] {
     position: relative;
 }
@@ -10,3 +14,14 @@ a[data-toggle="collapse"] {
     transform: translateY(-50%);
 }
 
+li{
+    background-color: #384452;
+}
+li a{
+    font-size: 20px;
+    color: #ffffff;
+}
+
+li:hover{
+    background-color: #25b8ba;
+}

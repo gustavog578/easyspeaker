@@ -6,10 +6,20 @@ const { Schema } = mongoose;
 const teacherSchema = new Schema({
     username: String,
     lastname: String,
-    user_type: Number,
     email: String,
-    native_language: String,
-    others_languages: Array
+    user_type: Number,
+    age: Number,
+    nationality: String,
+    birthday:String,
+    genre : String,
+    native_lang: String,
+    lat: Number,
+    lng: Number,
+    currency : String,
+    price: Number,
+    others_lang :Array,
+    skills :Array
+
    
 });
 

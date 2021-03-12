@@ -39,14 +39,13 @@ export class LoginComponent implements OnInit {
       
     );
   }
+  
   handleResponse(data){
-    console.log(data);
-    console.log("token es: ", data.access_token);
-    this.Token.handle(data.access_token); 
-    this.Auth.changeAuthStatus(true);
-    this.Auth.showUser(data.user.username, data.user.lastname);
-    this.Auth.saveUser(data.user.username, data.user.lastname);
     
+    this.Token.handle(data.access_token); 
+    this.Auth.changeAuthStatus(true);    
+    this.Auth.showUser(data.user.name, data.user.lastname);
+    this.Auth.saveUser(data.user.name, data.user.lastname);
     
     this.router.navigateByUrl('/profile');
     /*if (data.user.user_type == 1 ){
