@@ -19,12 +19,12 @@ export class SignUpComponent implements OnInit {
     genre : null
   };
 
-  public errors = [];
+  public errors = {};
 
   constructor(private Jarwis:JarwisService, private router: Router) { }
 
   onSubmit() {
-    console.log(this.form);
+    
     return this.Jarwis.signup(this.form).subscribe(
       data => this.handleResponse(data),
       error => this.handleError(error)
@@ -33,11 +33,20 @@ export class SignUpComponent implements OnInit {
   }
 
   handleResponse(data) {
+   
+    console.log("repsonse data", data);
+
+    if(data){
+      this.router.navigate(['/login']);
+    }
+
+    
     //this.Token.handle(data.access_token);
     //this.Auth.changeAuthStatus(true);
     //this.getLoggedUser(data);
     //this.setUserName();
-    this.router.navigateByUrl('/login');
+    //this.router.navigateByUrl('/login');
+
     
     /*if (parseInt(this.userLogged.user_type) == 1) {
       this.router.navigateByUrl('/login');
@@ -48,7 +57,10 @@ export class SignUpComponent implements OnInit {
   }
 
   handleError(error) {
-    this.errors = error.error.errors;
+    console.log(error.error.email);
+    this.errors = {"email" : error.error.email}
+  
+    
   }
   ngOnInit() {
   }

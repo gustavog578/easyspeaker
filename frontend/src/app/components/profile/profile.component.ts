@@ -17,12 +17,12 @@ export class ProfileComponent implements OnInit {
    }
 
   ngOnInit() {
-    $('#sidebar').addClass('inactive');
+    //$('#sidebar').addClass('inactive');
   }
 
   public showPanel() {
-     $('#sidebar').removeClass('inactive');
-     $('#sidebar').addClass('active');
+    // $('#sidebar').removeClass('inactive');
+    // $('#sidebar').addClass('active');
   }
 
 }

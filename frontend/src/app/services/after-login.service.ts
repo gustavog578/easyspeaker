@@ -11,7 +11,6 @@ export class AfterLoginService implements CanActivate{
   }
   constructor(private Token: TokenService) {
 
-    console.log("estoy logueado");
    }
 
 }

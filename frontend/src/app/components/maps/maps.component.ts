@@ -85,7 +85,7 @@ export class MapsComponent implements OnInit {
       }
 
     }
-    //console.log(bounds);
+    
   }
 
   checkMarkersInBounds(bounds) {
@@ -94,7 +94,7 @@ export class MapsComponent implements OnInit {
      this.filteredMarkers = [];
 
     for (let mark of this.markers) {
-      console.log("enrtra");
+     
       let teacherPos = { lat: mark.lat, lng: mark.lng };
 
       if (bounds.contains(teacherPos)) {

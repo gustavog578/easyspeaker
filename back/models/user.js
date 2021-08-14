@@ -4,33 +4,23 @@ const jwt  = require('jsonwebtoken');
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
-    username : String,
+    username: String,
     lastname : String,
     user_type : Number,
+    genre: String,
     email: String,
     password: String
 });
 
 userSchema.methods.encryptPassword = (password) => {
 
-    bcrypt.hash(password, 10, function(err, hash) {
-        if(err) return err;
-        return hash;
-    });
-
-    //console.log("encrypt", password);
-    //return bcrypt.hash(password, bcrypt.genSaltSync(10));
+    return bcrypt.hash(password, bcrypt.genSaltSync(10));
 };
 
 userSchema.methods.comparePassword = async function (password) {
-    
-    const user = this;
-    const compare = await bcrypt.compare(password, user.password);
-  
-    return compare;
-    
-    /*password = password.toString();
-    return bcrypt.compareSync(password, this.password);*/
+        
+    password = password.toString();
+    return bcrypt.compareSync(password, this.password);
 };
 
 // Custom validation for email
@@ -43,17 +33,14 @@ userSchema.path('email').validate((val) => {
 userSchema.pre(
     'save', 
     async function (next) {
-        const user = this;
-        const hash = await bcrypt(this.password,10)
-        this.password = hash;
-        next();
-        /*bcrypt.genSalt(10, (err, salt) => {
+      
+        bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(this.password, salt, (err, hash) => {
             this.password = hash;
             this.saltSecret = salt;
           
         });
-     });*/
+     });
 });
 
 
@@ -66,7 +53,7 @@ userSchema.methods.verifyPassword = async function (password) {
 };
 
 userSchema.methods.generateJwt = function () {
-    console.log(this._id);
+
     return jwt.sign({ id: this._id }, "SECRET123", {expiresIn: "2m" });
 }
 

@@ -47,6 +47,7 @@ export class ListTeachersInfoComponent implements OnInit {
     this.allTeachers = data;
     this.teachers = data;
     this.teachersCount = this.teachers.length;
+    this.TeacherService.updateMarkers(this.teachers);
   }
 
   handleLanguages(data) {

@@ -10,8 +10,9 @@ export class JarwisService {
   constructor(private http: HttpClient) { }
 
   signup(data){
-    console.log("datos", data);
-    return this.http.post(`${this.baseUrl}/signup`,data);
+       
+    return this.http.post(`${this.baseUrl}/signup`, data);
+    
   }
 
   login(data){

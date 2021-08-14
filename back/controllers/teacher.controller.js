@@ -1,9 +1,9 @@
-const Teacher = require('../models/teacher');
+const User = require('../models/user');
 const bcrypt = require('bcrypt-nodejs');
 const teacherCtrl = {};
 
 teacherCtrl.getTeachers = async (req, res, next) => {
-    const teachers = await Teacher.find({}, { 
+    const teachers = await User.find({ user_type: 1 }, { 
                 "email": 1,
                 "username": 2,
                 "lastname": 3,
@@ -22,7 +22,7 @@ teacherCtrl.getTeachers = async (req, res, next) => {
 
 teacherCtrl.createTeacher = async (req, res, next) => {
     let password = bcrypt(req.body.password);
-    const teacher = new Teacher({
+    const teacher = new User({
         name: req.body.name,
         email: req.body.email,
         password: password
@@ -33,7 +33,7 @@ teacherCtrl.createTeacher = async (req, res, next) => {
 
 teacherCtrl.getTeacher = async (req, res, next) => {
     const { id } = req.params;
-    const teacher = await Teacher.findById(id);
+    const teacher = await User.findById(id);
     res.json(teacher);
 };
 

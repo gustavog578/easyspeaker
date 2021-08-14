@@ -5,22 +5,23 @@ import { TokenService } from '../token.service';
 import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable()
+
 export class AuthService {
 
-
-
-  private loggedIn = new BehaviorSubject<boolean>(this.Token.loggedIn());
-  public userUpdated = new BehaviorSubject<string>(this.Token.getUser());
-  //@Output() userLogged = new BehaviorSubject <string>("");
-
-  //userUpdated: EventEmitter<string> = new EventEmitter();
-  //user = this.userLogged.asObservable();
+  private loggedIn = new BehaviorSubject<boolean | false>(this.Token.loggedIn());
   
+  public userUpdated = new BehaviorSubject<string>(this.Token.getUser());
+
+
   authStatus = this.loggedIn.asObservable();
+  
   userLogged = this.userUpdated.asObservable();
 
   changeAuthStatus(value : boolean){
+
+    console.log("new value status", value)
     this.loggedIn.next(value);
+
   }  
 
  /* getCurrentUser(): Observable<string> {
@@ -30,9 +31,6 @@ export class AuthService {
   showUser(username : string, lastname : string){
     let fullname = username + ' ' +lastname;
     this.userUpdated.next(fullname);
-   // console.log("name ", fullname);
-    //this.userUpdated.emit(fullname);
-
   }
 
   saveUser(name: string, lastname:string){

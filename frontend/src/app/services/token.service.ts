@@ -44,9 +44,6 @@ export class TokenService {
     
       if(payload){
         return true;
-        /*let obj = Object.values(this.iss).indexOf(payload.iss) > -1 ? true : false; 
-        console.log("OBJ PAYLOAD", obj);
-        return obj;*/
       }
     }
     return false;

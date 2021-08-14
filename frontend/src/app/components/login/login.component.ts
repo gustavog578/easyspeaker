@@ -41,19 +41,20 @@ export class LoginComponent implements OnInit {
   }
   
   handleResponse(data){
-    
+
     this.Token.handle(data.access_token); 
-    this.Auth.changeAuthStatus(true);    
-    this.Auth.showUser(data.user.name, data.user.lastname);
-    this.Auth.saveUser(data.user.name, data.user.lastname);
+    this.Auth.changeAuthStatus(true);
+    // Set user logged    
+    this.Auth.showUser(data.user.username, data.user.lastname);
+    // Set user on token
+    this.Auth.saveUser(data.user.username, data.user.lastname);
     
-    this.router.navigateByUrl('/profile');
-    /*if (data.user.user_type == 1 ){
-      console.log("redirecting");
+   
+    if (data.user.user_type == 1 ){
        this.router.navigateByUrl('/teachers');
     }else{
        this.router.navigateByUrl('/profile');
-    }*/
+    }
   }
 
   handleError(error){

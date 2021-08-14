@@ -23,15 +23,13 @@ export class NavbarComponent implements OnInit {
               private Token : TokenService) { }
 
   ngOnInit() {
-    console.log("iniciando modulo");
-    this.Auth.authStatus.subscribe(value => this.loggedIn = value);
+   
+    console.log("logged in component before ", this.loggedIn)
+    this.Auth.authStatus.subscribe(value => this.loggedIn = value)
+    console.log("logged in component after ", this.loggedIn)
+
     this.Auth.userUpdated.subscribe(user => this.user = user);
     
-    
-
-    //this.user = this.Token.getUser();
-    console.log("status is :", this.loggedIn);
-    console.log("usuario es :", this.user);
    
   }
 

@@ -14,4 +14,4 @@ MapsCtrl.searchByLanguage = async (req, res, next) => {
     res.json(teachersByLanguage);
 };
 
-module.exports = languageCtrl;
+module.exports = MapsCtrl;
